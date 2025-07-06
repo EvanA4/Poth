@@ -11,7 +11,7 @@
 		"@types/node": "^24.0.10"
 	},
 	"scripts": {
-		"start": "pnpm exec nodemon server.ts"
+		"start": "pnpm exec nodemon proxy.ts"
 	},
 	"type": "module"
 }
