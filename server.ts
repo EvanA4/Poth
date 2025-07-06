@@ -12,12 +12,17 @@ app.listen(SERVER_PORT, () => {
 app.use(cookies());
 app.use(express.json());
 app.use((req, res) => {
-    console.log(`\nRequest: ${req.path}`);
+    console.log(`\n${req.method} Request: ${req.path}`);
 
     let cks = req.cookies;
     console.log(`\tCookies: "${JSON.stringify(cks)}"`)
 
-    res.status(300).cookie(
-        'myTestCookie', 'testValue'
-    ).send("Hello from xjs test");
+    if (req.path == "/redirect-me") {
+        res.status(300).redirect("/you/were/redirected");
+
+    } else {
+        res.status(200).cookie(
+            'myTestCookie', 'testValue'
+        ).send("Hello from xjs test");
+    }
 });
