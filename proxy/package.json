@@ -18,6 +18,7 @@
 		"lint": "eslint 'src/**/*.ts'"
 	},
 	"dependencies": {
-		"cookie-parser": "^1.4.7"
+		"cookie-parser": "^1.4.7",
+		"http-proxy-middleware": "^3.0.5"
 	}
 }
