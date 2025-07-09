@@ -1,7 +1,7 @@
 import { Sequelize, DataTypes, Model, CreationOptional } from 'sequelize';
 import dotenv from 'dotenv';
 import mysql from 'mysql2';
-import { User } from '../types/user';
+import { User } from '../types/user.ts';
 
 dotenv.config();
 
@@ -12,6 +12,7 @@ const sequelize = new Sequelize({
     host: process.env.MYSQL_URL,
     dialect: 'mysql',
     dialectModule: mysql,
+    logging: false
 });
 await sequelize.authenticate();
 
@@ -37,7 +38,8 @@ UserModel.init({
 
     username: {
       type: new DataTypes.STRING(128),
-      allowNull: false
+      allowNull: false,
+      unique: true
     },
     password: {
       type: new DataTypes.STRING(128),
