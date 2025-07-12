@@ -2,8 +2,8 @@ import express, { Request, Response } from 'express';
 import cookies from 'cookie-parser';
 import { createProxyMiddleware } from 'http-proxy-middleware';
 const app = express();
-const SERVER_PORT = 2999;
-const LOGIN_SERVER_URI = "http://localhost:3000";
+const SERVER_PORT = 6000;
+const LOGIN_SERVER_URI = "http://localhost:6001";
 
 const proxyMiddleware = createProxyMiddleware<Request, Response>({
   target: LOGIN_SERVER_URI,
