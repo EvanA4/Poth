@@ -4,6 +4,13 @@ Minimalist user authentication reverse proxy which can be used to protect routes
 # Routes for User DB
 
 ```
+login (username, password)
+verifyJWT (jwt: string)
+create, delete user
+get all users
+```
+
+```
 actionCreateJWT
 (payload: SessionPayload)
 SignJWT
@@ -35,3 +42,12 @@ User | undefined
 getUsers
 User[]
 ```
+
+# Todo
+
+JSON or config in root of repo to determine where to redirect users in `/proxy` server.
+Better environment variable configuration for generalized use
+Docker containers?
+
+list each sub-project's env config options/requirements in this README
+list their port numbers, too
