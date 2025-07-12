@@ -8,6 +8,7 @@ const LOGIN_SERVER_URI = "http://localhost:3000";
 const proxyMiddleware = createProxyMiddleware<Request, Response>({
   target: LOGIN_SERVER_URI,
   changeOrigin: true,
+  ws: true
 });
 
 app.use(cookies());
@@ -18,7 +19,7 @@ app.use(async (
     // const cks = req.cookies;
     // console.log(`\tCookies: "${JSON.stringify(cks)}"`);
 
-    if (req.path.indexOf("/login/") == 0 || req.path == "/login") {
+    if (req.path.indexOf("/poth/") == 0 || req.path == "/poth") {
         console.log(`Forwarding "${req.method} ${req.path}"`);
         proxyMiddleware(req, res);
 
@@ -27,7 +28,7 @@ app.use(async (
         //     'myTestCookie', 'testValue'
         // ).send("Hello from xjs test");
         console.log(`Received "${req.method} ${req.path}"`);
-        res.send("Page does not exist");
+        res.send(`Welcome to "${req.path}"`);
     }
 });
 
