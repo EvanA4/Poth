@@ -1,3 +1,13 @@
+export type Session = {
+    userId: number,
+    expiresAt: Date
+};
+
+export type SessionPayload = {
+    userId: string;
+    expiresAt: Date;
+};
+
 export type User = {
     id?: number,
     createdAt?: Date,
@@ -5,6 +15,5 @@ export type User = {
 
     username: string,
     password: string,
-    hint: string,
     roles: string
 };
