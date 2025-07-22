@@ -3,11 +3,6 @@ export type Session = {
     expiresAt: Date
 };
 
-export type SessionPayload = {
-    userId: string;
-    expiresAt: Date;
-};
-
 export type User = {
     id?: number,
     createdAt?: Date,

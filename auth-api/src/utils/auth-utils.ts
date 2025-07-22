@@ -1,6 +1,6 @@
 import { jwtVerify, SignJWT } from "jose";
 import { compare } from "bcrypt";
-import { Session, SessionPayload } from "../types/authtypes";
+import { Session, User } from "../types/authtypes";
 import { getUserByName } from "./user-utils";
 
 
@@ -8,13 +8,13 @@ const secretKey = process.env.SESSION_SECRET; // base64 number
 const encodedKey = new TextEncoder().encode(secretKey);
 
 
-// export async function actionCreateJWT(payload: SessionPayload): Promise<SignJWT> {
-//     return new SignJWT(payload)
-//         .setProtectedHeader({ alg: "HS256" })
-//         .setIssuedAt()
-//         .setExpirationTime("7d")
-//         .sign(encodedKey);
-// }
+export async function encryptJWT(payload: Session): Promise<string> {
+    return await new SignJWT(payload)
+        .setProtectedHeader({ alg: "HS256" })
+        .setIssuedAt()
+        .setExpirationTime("7d")
+        .sign(encodedKey);
+}
 
 
 export async function decryptJWT(session: string | undefined = ""): Promise<Session | undefined> {
@@ -30,14 +30,14 @@ export async function decryptJWT(session: string | undefined = ""): Promise<Sess
 }
 
 
-export async function validateCredentials(username: string, password: string): Promise<boolean> {
+export async function validateCredentials(username: string, password: string): Promise<{ valid: boolean, user?: User }> {
     let user = await getUserByName(username);
 
     if (!user) {
-        return false;
+        return { valid: false };
     }
 
     let result = await compare(password, user.password);
 
-    return result;
+    return { valid: result, user };
 }

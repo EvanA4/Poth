@@ -7,7 +7,10 @@ import { User } from "../types/authtypes";
 export async function getUserHandler(_: Request, res: Response) {
     const users = (await UserModel.findAll()).map(x => x.dataValues);
 
-    res.send(users);
+    res.send({
+        message: "Successfully retrieved users.",
+        data: users
+    });
 };
 
 

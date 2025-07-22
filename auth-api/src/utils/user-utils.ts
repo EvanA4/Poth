@@ -44,6 +44,17 @@ export async function getUserByName(username: string): Promise<User | undefined>
 }
 
 
+export async function getUserById(id: number): Promise<User | undefined> {
+    if (!id || id < 0) {
+        return undefined;
+    }
+    
+    return (await UserModel.findOne({ where: {
+        id
+    }}))?.dataValues;
+}
+
+
 export async function updateUser(searchUsername: string, data: User): Promise<User | undefined> {
     if (!searchUsername) {
         return undefined;

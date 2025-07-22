@@ -1,10 +1,12 @@
 import express from 'express';
 import { createUserHandler, deleteUserHandler, getUserHandler, updateUserHandler } from './handlers/user-handlers';
 import { loginHandler, verifyJWTHandler } from './handlers/auth-handlers';
+import cookies from 'cookie-parser';
 
 // Server setup
 const app = express();
 const SERVER_PORT = 6002;
+app.use(cookies());
 app.use(express.json());
 
 // User CRUD
