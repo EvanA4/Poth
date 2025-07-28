@@ -40,7 +40,7 @@ async function test() {
     let res = await fetch(`http://localhost:6002/users?username=${recreated[0].username}`, {
         method: "PUT",
         body: JSON.stringify({
-            roles: JSON.stringify(["custom", "roles", "example"])
+            roles: JSON.stringify(["admin", "roles", "example"])
         }),
         headers: new Headers({
             'content-type': 'application/json'

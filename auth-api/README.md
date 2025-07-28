@@ -26,7 +26,7 @@ url | method | params | body | response
 
 
 
-### Other Notes
+### Other Notes on Routes
 
 The `username` field in the search params for the PUT method in the `users` route is what finds the user in the database. Also, the login route's response is the JWT associated with that login. And finally: the `User` type in this case matches the following description:
 ```
@@ -41,4 +41,15 @@ The `username` field in the search params for the PUT method in the `users` rout
     password: string,
     roles: string
 }
+```
+
+## Environment Variables
+
+```
+MYSQL_BASE="databaseName"
+MYSQL_USER="usernameForDatabase"
+MYSQL_PASS="passwordForUsername"
+MYSQL_URL="localhost"
+
+SESSION_SECRET="32-character, base-64 number"
 ```

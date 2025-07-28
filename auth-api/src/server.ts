@@ -6,6 +6,7 @@ import cookies from 'cookie-parser';
 // Server setup
 const app = express();
 const SERVER_PORT = 6002;
+
 app.use(cookies());
 app.use(express.json());
 
